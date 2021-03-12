@@ -15,3 +15,5 @@ app.listen(PORT, () => {
 
 // middleware
 app.use(express.static(path.join(__dirname, '../'))); // 静的ファイルの配信
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
