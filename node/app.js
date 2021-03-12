@@ -21,4 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // token
 const hash = bcrypt.hashSync(process.env.ACCESS_TOKEN_SECRET, 10);
-console.log(hash)
+
+// apiserverの読み込み
+const apiserver = require('./apiServer');
+apiserver(hash);
