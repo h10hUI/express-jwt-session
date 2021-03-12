@@ -4,7 +4,7 @@
   "description": "https://www.google.com/search?q=nodejs+jwt%E8%AA%8D%E8%A8%BC&rlz=1C5CHFA_enJP855JP855&source=lnt&tbs=qdr:y&sa=X&ved=2ahUKEwjqjpKerqrvAhWNwZQKHWn4DtkQpwV6BAgJECg&biw=1920&bih=946",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon node/app.js"
   },
   "repository": {
     "type": "git",
