@@ -5,6 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const bcrypt = require('bcrypt');
 const app = express();
 
 // server
@@ -17,3 +18,7 @@ app.listen(PORT, () => {
 app.use(express.static(path.join(__dirname, '../'))); // 静的ファイルの配信
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// token
+const hash = bcrypt.hashSync(process.env.ACCESS_TOKEN_SECRET, 10);
+console.log(hash)
