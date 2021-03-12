@@ -3,7 +3,6 @@ require('dotenv').config();
 
 // 必要なモジュール読み込み
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const app = express();
