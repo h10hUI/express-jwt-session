@@ -27,4 +27,4 @@ apiServer(hash);
 
 // 認証用ミドルウェアの読み込み
 const authMiddle = require('./authMiddle');
-authMiddle();
+authMiddle(hash);
