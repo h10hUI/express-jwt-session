@@ -6,7 +6,7 @@ const app = express();
 // セッション保持時間を定数化
 const sessionRetentionTime = '1m';
 
-function apiserver(str) {
+function apiServer(str) {
     app.post('/login', (req, res) => {
         const payload = {
             user: req.body.user
@@ -25,4 +25,4 @@ function apiserver(str) {
     });
 }
 
-module.exports = apiserver;
+module.exports = apiServer;
