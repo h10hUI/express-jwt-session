@@ -24,3 +24,7 @@ const hash = bcrypt.hashSync(process.env.ACCESS_TOKEN_SECRET, 10);
 // apiserverの読み込み
 const apiServer = require('./apiServer');
 apiServer(hash);
+
+// 認証用ミドルウェアの読み込み
+const authMiddle = require('./authMiddle');
+authMiddle();
