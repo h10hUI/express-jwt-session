@@ -27,6 +27,16 @@ function authMiddle(str) {
             }
         });
     }
+
+    // 認証必須API
+    app.get('/user', auth, (req, res, next) => {
+        res.send(200, 'your name is ${req.decoded.user}')
+    })
+
+    // エラーハンドリング
+    app.use((err, req, res, next) => {
+        res.send(500, err)
+    })
 }
 
 module.exports = authMiddle;
