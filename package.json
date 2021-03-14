@@ -1,7 +1,7 @@
 {
   "name": "express-jwt-session",
   "version": "1.0.0",
-  "description": "https://www.google.com/search?q=nodejs+jwt%E8%AA%8D%E8%A8%BC&rlz=1C5CHFA_enJP855JP855&source=lnt&tbs=qdr:y&sa=X&ved=2ahUKEwjqjpKerqrvAhWNwZQKHWn4DtkQpwV6BAgJECg&biw=1920&bih=946",
+  "description": "express-jwt-session",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon node/app.js"
