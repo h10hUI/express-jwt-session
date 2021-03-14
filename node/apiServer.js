@@ -13,7 +13,7 @@ function apiServer(str) {
         };
 
         const option = {
-            expiresIn : sessionRetentionTime
+            expiresIn: sessionRetentionTime
         };
 
         const token = jwt.sign(payload, str, option);
