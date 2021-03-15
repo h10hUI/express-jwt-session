@@ -5,6 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const app = express();
 
 // server
@@ -18,20 +19,20 @@ app.use(express.static(path.join(__dirname, '../'))); // 静的ファイルの�
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// token
-const hash = bcrypt.hashSync(process.env.ACCESS_TOKEN_SECRET, 10);
+// secret
+const SECRET_KEY = bcrypt.hashSync(process.env.ACCESS_TOKEN_SECRET, 10);
 
-// apiserverの読み込み
+// JWT発行API
 app.post('/login', (req, res) => {
     const payload = {
         user: req.body.user
     };
 
     const option = {
-        expiresIn: sessionRetentionTime
+        expiresIn: '1m'
     };
 
-    const token = jwt.sign(payload, hash, option);
+    const token = jwt.sign(payload, SECRET_KEY, option);
 
     res.json({
         message: "create token",
@@ -39,7 +40,7 @@ app.post('/login', (req, res) => {
     });
 });
 
-// 認証用ミドルウェアの読み込み
+// 認証用ミドルウェア
 const auth = (res, req, next) => {
     // リクエストヘッダーからトークンの取得
     let token = '';
@@ -52,21 +53,21 @@ const auth = (res, req, next) => {
     }
 
     // トークンの検証
-    jwt.verify(token, hash, function(err, decoded) {
+    jwt.verify(token, SECRET_KEY, function(err, decoded) {
         if (err) {
             // 認証エラーの時
             next(err.message)
         } else {
             // 認証OK
-            req.decoded = decoded
-            next()
+            req.decoded = decoded;
+            next();
         }
     });
 }
 
 // 認証必須API
 app.get('/user', auth, (req, res, next) => {
-    res.status(200).send('your name is ${req.decoded.user}')
+    res.status(200).send(`your name is ${req.decoded.user}`)
 })
 
 // エラーハンドリング
