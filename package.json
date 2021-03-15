@@ -4,7 +4,7 @@
   "description": "express-jwt-session",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon node/app.js"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",

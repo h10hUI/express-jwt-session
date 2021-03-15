@@ -34,7 +34,7 @@ app.post('/login', (req, res) => {
     const token = jwt.sign(payload, hash, option);
 
     res.json({
-        message: 'create token',
+        message: "create token",
         token: token
     });
 });
