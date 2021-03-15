@@ -17,7 +17,7 @@ app.listen(PORT, () => {
 // middleware
 app.use(express.static(path.join(__dirname, '../'))); // 静的ファイルの配信
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 
 // secret
 const SECRET_KEY = bcrypt.hashSync(process.env.ACCESS_TOKEN_SECRET, 10);
@@ -41,7 +41,7 @@ app.post('/login', (req, res) => {
 });
 
 // 認証用ミドルウェア
-const auth = (res, req, next) => {
+const auth = (req, res, next) => {
     // リクエストヘッダーからトークンの取得
     let token = '';
 
@@ -53,7 +53,7 @@ const auth = (res, req, next) => {
     }
 
     // トークンの検証
-    jwt.verify(token, SECRET_KEY, function(err, decoded) {
+    jwt.verify(token, SECRET_KEY, function (err, decoded) {
         if (err) {
             // 認証エラーの時
             next(err.message)
